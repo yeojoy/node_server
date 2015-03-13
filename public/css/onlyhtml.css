@@ -1,0 +1,28 @@
+.frac, .sup {
+	padding: 0 5px;
+}
+
+.frac {
+	display: inline-block;
+	/* inline-block으로 묶은 부분에서 vertical-align: middle; 로 넣어줘야 다른 글자와 중앙정렬이 된다. */
+	vertical-align: middle;
+	text-align: center;
+}
+
+.frac .sup {
+	display: block;
+}
+
+.frac .sub {
+	padding: 3px;
+	border-top: 2px solid #7B7B7B;
+	display: block;
+}
+
+.question_block input {
+	border: 1px solid #7B7B7B;
+	color: #7B7B7B;
+	font-size: 18pt;
+	width: 40px;
+	text-align: center;
+}

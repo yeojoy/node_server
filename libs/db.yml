@@ -1,0 +1,6 @@
+db:
+    host: 192.1.27.211
+    port: 3306
+    user: esls
+    password: Sm@rt2014eSLS
+    database: esls_prototype

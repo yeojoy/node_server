@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>sls - item examples</title>
+    <style>
+    .itemView {
+    	display:block;
+    	float:none;
+	    position: relative;
+	    width:600px;
+    }
+    .ex_list_t1 {
+        width: 100%;
+    }
+    .es_t1 {
+        width: 50%;
+        float: left;
+        position: relative;
+
+    }
+    .es_t1 img.item {
+        width: 100%;
+    }
+    .es_t1.sel img.red {
+        display: inline-block;
+    }
+    .es_t1 img.red {
+        width: 80px;
+        position: absolute;
+        top: 20px;
+        left: 60px;
+        display: none;
+    }
+    .es_t1 input {
+        display: none;
+    }
+    .answer {
+    	width: 100%;
+		text-align: right    
+	}
+    .send {
+    	width: 100px;
+    	-webkit-font-smoothing: antialiased;
+    	background-color: rgb(126, 187, 0);
+    	border-bottom-color: rgb(255, 255, 255);
+		border-radius: 5px;
+		border-bottom-style: none;
+		border-bottom-width: 0px;
+    }
+    </style>
+    <script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+
+<body>
+<div class="itemView">
+    <div class="pr">Select the groups of three.</div>
+    <input type="hidden" name="qId" id="qId" value="p0001"/>
+    <div class="ex_list_t1">
+        <div class="es_t1" id="q1">
+            <img class="item" src="p_img/Test-image_01.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        <div class="es_t1" id="q2">
+            <img class="item" src="p_img/Test-image_02.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        <div class="es_t1" id="q3">
+            <img class="item" src="p_img/Test-image_03.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        <div class="es_t1" id="q4">
+            <img class="item" src="p_img/Test-image_04.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        <div class="es_t1" id="q5">
+            <img class="item" src="p_img/Test-image_05.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        <div class="es_t1" id="q6">
+            <img class="item" src="p_img/Test-image_06.png">
+            <img class="red" src="img/red_sel.png">
+        </div>
+        
+    </div>
+    <div class="answer"> 
+		<button class="send">Submit</button>
+	</div>
+</div>
+    <!-- 사용자 선택 처리 부분 -->
+    <script>
+    function selectMuti(obj) {
+    	//var inputObj = obj.find("input:checkbox");
+    	var qId = $("#qId").val();
+		if(obj.hasClass('sel')){
+			//obj.find("input[name="+qId+"]:checkbox").attr("checked",false);
+			obj.removeClass("sel");
+		}else {
+			//obj.find("input[name="+qId+"]:checkbox").attr("checked",true);
+			obj.addClass("sel");
+		}
+    }
+    </script>
+    <!-- 문항 구조 부분 -->
+
+    <!-- 문항 구조에 해당하는 화면 처리 ItemScript -->
+
+    <!-- ItemScript 를 분기해주는 프레임웍 부분 -->
+
+    <!-- js init -->
+    <script>
+    $().ready(function(){
+    	$(".item").on("click",function(e){
+    		var p = $(this).parent("div.es_t1");
+    		selectMuti(p);
+    	});
+    	$(".red").on("click",function(e){
+    		var p = $(this).parent("div.es_t1");
+    		selectMuti(p);
+    	});
+    	$(".send").on("click",function(e){
+    		var qId = $("#qId").val();
+    		console.log("QId =>"+qId);
+    		var selObj = $("div.sel");
+    		console.log(selObj.length);
+    		for(i=0;i<selObj.length;i++){
+    			console.log("ddddd=>"+$(selObj[i]).attr("id"));
+    		}
+    	});
+        $(".es_t1").css("float","none").css("width","50%");
+    });
+    </script>
+</body>
+
+</html>

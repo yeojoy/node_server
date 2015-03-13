@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <title>sls - select one item</title>
+    <link href="./css/item.css" media="all" rel="stylesheet" type="text/css"/>
+    <link href="./css/mathquill.css" media="all" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="js/mathquill.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="js/handlebars-v1.3.0.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="js/loading_handlebars.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="js/q1_event.js" type="text/javascript" charset="utf-8" ></script>
+    <script src="js/q2_testdata.js" type="text/javascript" charset="utf-8" ></script>
+</head>
+
+<body>
+<div class="itemView">
+    
+</div>
+<script>
+$().ready(function(){
+    T.render('q1_template', function(t) {
+        $('.itemView').html( t(itemJson) );
+        init();
+    });
+});
+</script>
+</body>
+</html>

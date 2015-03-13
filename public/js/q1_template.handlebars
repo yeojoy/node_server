@@ -1,0 +1,79 @@
+<div class="question">
+    {{#each header}}
+    <div class="question_{{type}}">
+        {{#each value}}
+        {{#ifCond type '===' 'math'}}
+            <span class="eMath" >{{value}}</span>
+        {{/ifCond}}
+        {{#ifCond type '===' 'text'}}
+            <span class="text_{{style}}" >{{{ value }}}</span>
+        {{/ifCond}}
+        {{#ifCond type '===' 'image'}}
+            {{#if ../width}}
+                <img src="p_img/{{value}}" width={{width}}/>
+            {{else}} {{#if ../height}}
+                <img src="p_img/{{value}}" height={{height}}/>
+            {{else}}
+                <img src="p_img/{{value}}"/>
+            {{/if}}{{/if}}
+        {{/ifCond}}
+        
+        
+        {{#ifCond type '===' 'math_in'}}
+            {{#each value}}
+                {{#ifCond type '===' 'text'}}
+                    <span class="text">{{value}}</span>
+                {{/ifCond}}
+                {{#ifCond type '===' 'frac'}}
+                	{{#getMathHtml type sup sub}} {{/getMathHtml}}
+                {{/ifCond}}
+            {{/each}}
+        {{/ifCond}}
+        
+        {{/each}}
+    </div>
+    {{/each}}
+</div>
+<input type="hidden" name="q{{id}}" id="q{{id}}" value="p{{id}}"/>
+<!--div class="example"-->
+    {{#each choices}}
+    <ul class="example_{{type}} ">        
+        {{#each value.tuple}}
+        <li class="es es_t{{../value.place.section}}" id="{{@index}}">
+            {{#ifCond ../../type '===' '12'}}
+                <input class="radio" type="radio" name="chk_answer" id="radio_{{@index}}">
+            {{/ifCond}}
+            {{#ifCond ../../type '===' '13'}}
+                <input class="checkbox" type="checkbox" name="chk_answer" id="checkbox_{{@index}}">
+            {{/ifCond}}
+            {{#ifCond ../../type '===' '22'}}
+                <input class="checkNumHide" type="radio" name="chk_answer" id="radio_num_{{@index}}">
+            {{/ifCond}}
+
+    	    {{#ifCond type '===' 'text'}}
+                {{#ifCond ../../../type '===' '22'}}
+                    <span class="checkNum" for="radio_num_{{@index}}">{{src}}</span>
+                {{else}}
+                    <span class="text_{{@index}}">{{src}}</span>
+                {{/ifCond}}
+    	    {{/ifCond}}
+            {{#ifCond type '===' 'image'}}
+                {{#if ../width}}
+                    <img class="item" src="p_img/{{src}}" id="img_{{@index}}" width={{width}}>
+                {{else}} {{#if ../height}}
+                    <img class="item" src="p_img/{{src}}" id="img_{{@index}}" height={{height}}>
+                {{else}}
+                    <img class="item" src="p_img/{{src}}" id="img_{{@index}}">
+                {{/if}}{{/if}}
+            {{/ifCond}}
+            {{#ifCond type '===' 'input'}}
+        	   <input class="input" type="text" name="chk_answer" id="input_{{@index}}" value={{src}}>
+            {{/ifCond}}
+            {{#ifCond type '===' 'math'}}
+                <span class="eMath" >{{value}}</span>
+            {{/ifCond}}
+        </li>
+        {{/each}}
+    </ul>
+    {{/each}}
+<!--/div-->
